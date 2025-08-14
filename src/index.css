@@ -2,29 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern Sales Dashboard Design System */
+/* Beautiful Blue Sales Dashboard Design System */
 
 @layer base {
   :root {
-    /* Core Colors */
-    --background: 248 250 252;
-    --foreground: 203 23% 30%;
+    /* Core Colors - Beautiful Blue Palette */
+    --background: 245 250 255;
+    --foreground: 210 25% 25%;
 
-    /* Brand Colors */
-    --primary: 217 92% 55%;
-    --primary-foreground: 210 40% 98%;
-    --primary-glow: 217 92% 70%;
+    /* Brand Colors - Stunning Blue Gradients */
+    --primary: 210 100% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 210 100% 65%;
 
-    /* Surface Colors */
-    --card: 0 0% 100%;
-    --card-foreground: 203 23% 30%;
-    --surface-elevated: 220 14% 96%;
+    /* Surface Colors - Ocean Blues */
+    --card: 215 100% 98%;
+    --card-foreground: 210 25% 25%;
+    --surface-elevated: 210 50% 96%;
 
-    /* Interactive Colors */
-    --muted: 218 11% 65%;
-    --muted-foreground: 215 25% 27%;
-    --accent: 213 27% 84%;
-    --accent-foreground: 203 23% 30%;
+    /* Interactive Colors - Sky Blues */
+    --muted: 210 30% 75%;
+    --muted-foreground: 210 25% 35%;
+    --accent: 200 80% 90%;
+    --accent-foreground: 210 25% 25%;
 
     /* Status Colors */
     --success: 142 69% 58%;
@@ -46,10 +46,11 @@
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 203 23% 35%;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(217 92% 55%), hsl(217 92% 70%));
-    --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 96%));
-    --gradient-success: linear-gradient(135deg, hsl(142 69% 58%), hsl(142 69% 70%));
+    /* Gradients - Ocean Wave Blues */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 55%), hsl(195 100% 65%));
+    --gradient-surface: linear-gradient(180deg, hsl(215 100% 98%), hsl(210 50% 96%));
+    --gradient-success: linear-gradient(135deg, hsl(150 70% 55%), hsl(160 70% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 50%), hsl(195 90% 60%), hsl(180 85% 70%));
 
     /* Shadows */
     --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);

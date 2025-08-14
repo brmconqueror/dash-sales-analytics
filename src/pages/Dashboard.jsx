@@ -3,16 +3,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { SimpleChart, ChartData } from "@/components/charts/SimpleChart";
-import { StatCard } from "@/components/dashboard/StatCard";
-import { DateRangeFilter } from "@/components/filters/DateRangeFilter";
+import { SimpleChart } from "@/components/charts/SimpleChart.jsx";
+import { StatCard } from "@/components/dashboard/StatCard.jsx";
+import { DateRangeFilter } from "@/components/filters/DateRangeFilter.jsx";
 import { DollarSign, Users, ShoppingBag, TrendingUp, BarChart3, LineChart } from "lucide-react";
 
 export default function Dashboard() {
-  const [chartType, setChartType] = useState<"line" | "bar">("line");
+  const [chartType, setChartType] = useState("line");
   
   // Mock data - replace with API calls
-  const salesData: ChartData[] = [
+  const salesData = [
     { name: "Ocak", value: 45000 },
     { name: "Şubat", value: 52000 },
     { name: "Mart", value: 48000 },
@@ -21,7 +21,7 @@ export default function Dashboard() {
     { name: "Haziran", value: 67000 },
   ];
 
-  const handleDateChange = (dateRange: any) => {
+  const handleDateChange = (dateRange) => {
     console.log("Date range changed:", dateRange);
     // Here you would make API call with date range
   };
@@ -42,9 +42,9 @@ export default function Dashboard() {
       </div>
 
       {/* Filter Bar */}
-      <Card className="filter-bar">
+      <Card className="filter-bar shadow-lg" style={{background: 'var(--gradient-surface)', border: '1px solid hsl(var(--primary)/0.2)'}}>
         <CardContent className="p-4">
-          <div className="flex flex-wrap gap-4 items-end">
+          <div className="d-flex flex-wrap gap-3 align-items-end">
             <div className="space-y-2">
               <label className="text-sm font-medium">Tarih Aralığı</label>
               <DateRangeFilter onDateChange={handleDateChange} />
@@ -85,39 +85,47 @@ export default function Dashboard() {
       </Card>
 
       {/* Statistics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard
-          title="Toplam Satış"
-          value="₺2,847,350"
-          subtitle="Bu ay"
-          icon={DollarSign}
-          trend={{ value: 12.5, isPositive: true }}
-          color="hsl(142, 69%, 58%)"
-        />
-        <StatCard
-          title="Toplam Sipariş"
-          value="1,247"
-          subtitle="Bu ay"
-          icon={ShoppingBag}
-          trend={{ value: 8.2, isPositive: true }}
-          color="hsl(217, 92%, 55%)"
-        />
-        <StatCard
-          title="Aktif Müşteri"
-          value="342"
-          subtitle="Bu ay"
-          icon={Users}
-          trend={{ value: 3.1, isPositive: false }}
-          color="hsl(38, 92%, 50%)"
-        />
-        <StatCard
-          title="Ortalama Sipariş"
-          value="₺2,284"
-          subtitle="Bu ay"
-          icon={TrendingUp}
-          trend={{ value: 5.7, isPositive: true }}
-          color="hsl(0, 84%, 60%)"
-        />
+      <div className="row g-4">
+        <div className="col-lg-3 col-md-6">
+          <StatCard
+            title="Toplam Satış"
+            value="₺2,847,350"
+            subtitle="Bu ay"
+            icon={DollarSign}
+            trend={{ value: 12.5, isPositive: true }}
+            color="hsl(150, 70%, 55%)"
+          />
+        </div>
+        <div className="col-lg-3 col-md-6">
+          <StatCard
+            title="Toplam Sipariş"
+            value="1,247"
+            subtitle="Bu ay"
+            icon={ShoppingBag}
+            trend={{ value: 8.2, isPositive: true }}
+            color="hsl(210, 100%, 55%)"
+          />
+        </div>
+        <div className="col-lg-3 col-md-6">
+          <StatCard
+            title="Aktif Müşteri"
+            value="342"
+            subtitle="Bu ay"
+            icon={Users}
+            trend={{ value: 3.1, isPositive: false }}
+            color="hsl(45, 95%, 60%)"
+          />
+        </div>
+        <div className="col-lg-3 col-md-6">
+          <StatCard
+            title="Ortalama Sipariş"
+            value="₺2,284"
+            subtitle="Bu ay"
+            icon={TrendingUp}
+            trend={{ value: 5.7, isPositive: true }}
+            color="hsl(330, 80%, 65%)"
+          />
+        </div>
       </div>
 
       {/* Charts Section */}

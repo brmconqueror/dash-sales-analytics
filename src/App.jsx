@@ -4,26 +4,21 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { LoginForm } from "./components/auth/LoginForm";
-import { DashboardLayout } from "./components/layout/DashboardLayout";
-import Dashboard from "./pages/Dashboard";
-import Orders from "./pages/Orders";
-import Customers from "./pages/Customers";
-import Reports from "./pages/Reports";
-import NotFound from "./pages/NotFound";
+import { LoginForm } from "./components/auth/LoginForm.jsx";
+import { DashboardLayout } from "./components/layout/DashboardLayout.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Orders from "./pages/Orders.jsx";
+import Customers from "./pages/Customers.jsx";
+import Reports from "./pages/Reports.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 const queryClient = new QueryClient();
 
-interface User {
-  username: string;
-  isAdmin: boolean;
-}
-
 const App = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const handleLogin = (userData: User) => {
+  const handleLogin = (userData) => {
     setUser(userData);
     setIsAuthenticated(true);
   };

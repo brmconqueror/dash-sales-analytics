@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calendar, CalendarIcon } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { tr } from "date-fns/locale";
 import { Button } from "@/components/ui/button";
@@ -7,23 +7,13 @@ import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
-interface DateRange {
-  from: Date | undefined;
-  to: Date | undefined;
-}
-
-interface DateRangeFilterProps {
-  onDateChange: (dateRange: DateRange) => void;
-  placeholder?: string;
-}
-
-export function DateRangeFilter({ onDateChange, placeholder = "Tarih aralığı seçin" }: DateRangeFilterProps) {
-  const [dateRange, setDateRange] = useState<DateRange>({
+export function DateRangeFilter({ onDateChange, placeholder = "Tarih aralığı seçin" }) {
+  const [dateRange, setDateRange] = useState({
     from: undefined,
     to: undefined,
   });
 
-  const handleDateSelect = (range: DateRange) => {
+  const handleDateSelect = (range) => {
     setDateRange(range);
     onDateChange(range);
   };
@@ -34,11 +24,17 @@ export function DateRangeFilter({ onDateChange, placeholder = "Tarih aralığı 
         <Button
           variant="outline"
           className={cn(
-            "w-[280px] justify-start text-left font-normal",
-            !dateRange.from && "text-muted-foreground"
+            "justify-start text-left fw-normal border-primary",
+            !dateRange.from && "text-muted"
           )}
+          style={{
+            width: '280px',
+            background: 'hsl(var(--card))',
+            borderColor: 'hsl(var(--primary)/0.3)',
+            transition: 'var(--transition-smooth)'
+          }}
         >
-          <CalendarIcon className="mr-2 h-4 w-4" />
+          <CalendarIcon className="me-2" style={{width: '1rem', height: '1rem'}} />
           {dateRange.from ? (
             dateRange.to ? (
               <>
@@ -53,7 +49,10 @@ export function DateRangeFilter({ onDateChange, placeholder = "Tarih aralığı 
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
+      <PopoverContent className="w-auto p-0 border-0 shadow-lg" align="start" style={{
+        background: 'hsl(var(--card))',
+        borderRadius: '0.75rem'
+      }}>
         <CalendarComponent
           initialFocus
           mode="range"
